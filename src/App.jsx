@@ -12,22 +12,22 @@ function App() {
     sunny: {
       name: "Ensoleillé",
       icon: <IconSun fill="#466A9A"/>,
-      message: "Prennez vos lunettes de soleil"
+      message: "Prenez vos lunettes de soleil"
     },
     cloudy: {
       name: "Nuageux",
       icon: <IconCloud fill="#466A9A"/>,
-      message: "Prennez un manteau"
+      message: "Prenez un manteau"
     },
     windy: {
       name: "Vents",
       icon: <IconWindyLine fill="#466A9A"/>,
-      message: "Prennez une écharpe"
+      message: "Prenez une écharpe"
     },
     rainy: {
       name: "Pluvieux",
       icon: <IconCloudRain fill="#466A9A"/>,
-      message: "Prennez votre parapluie"
+      message: "Prenez votre parapluie"
     },
     stormy: {
       name: "Orageux",
