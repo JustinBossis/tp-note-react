@@ -8,6 +8,33 @@ function App() {
   const [weather, setWeather] = React.useState("");
   const [weatherIcon, setWeatherIcon] = React.useState("");
   const [weatherMessage, setWeatherMessage] = React.useState("");
+  const weatherData = {
+    sunny: {
+      name: "Ensoleillé",
+      icon: <IconSun fill="#466A9A"/>,
+      message: "Prennez vos lunettes de soleil"
+    },
+    cloudy: {
+      name: "Nuageux",
+      icon: <IconCloud fill="#466A9A"/>,
+      message: "Prennez un manteau"
+    },
+    windy: {
+      name: "Vents",
+      icon: <IconWindyLine fill="#466A9A"/>,
+      message: "Prennez une écharpe"
+    },
+    rainy: {
+      name: "Pluvieux",
+      icon: <IconCloudRain fill="#466A9A"/>,
+      message: "Prennez votre parapluie"
+    },
+    stormy: {
+      name: "Orageux",
+      icon: <IconThunderstormsLine fill="#466A9A"/>,
+      message: "Évitez de sortir, restez à l'abri !"
+    }
+  }
 
   const handleChange = (props) => {
     setCity(props.target.value);
@@ -20,38 +47,9 @@ function App() {
         .then((response) => response.json())
         .then((json) => {
           setTemperature(json.temperature);
-          switch (json.condition) {
-            case "sunny":
-              setWeather("Ensoleillé");
-              setWeatherIcon(<IconSun fill="#466A9A"/>);
-              setWeatherMessage("Prennez vos lunettes de soleil");
-              break;
-            case "cloudy":
-              setWeather("Nuageux");
-              setWeatherIcon(<IconCloud fill="#466A9A"/>);
-              setWeatherMessage("Prennez un manteau");
-              break;
-            case "windy":
-              setWeather("Vents");
-              setWeatherIcon(<IconWindyLine fill="#466A9A"/>);
-              setWeatherMessage("Prennez une écharpe");
-              break;
-            case "rainy":
-              setWeather("Pluvieux");
-              setWeatherIcon(<IconCloudRain fill="#466A9A"/>);
-              setWeatherMessage("Prennez votre parapluie");
-              break;
-            case "stormy":
-              setWeather("Orageux");
-              setWeatherIcon(<IconThunderstormsLine fill="#466A9A"/>);
-              setWeatherMessage("Évitez de sortir, restez à l'abri ! ");
-              break;
-            default:
-              setWeather("");
-              setWeatherIcon("");
-              setWeatherMessage("");
-              break;
-          }
+          setWeather(weatherData[json.condition].name);
+          setWeatherIcon(weatherData[json.condition].icon);
+          setWeatherMessage(weatherData[json.condition].message);
         })
         .catch((error) => {
           setWeatherMessage("Erreur lors de la récupération de la météo !")
