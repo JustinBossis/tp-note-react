@@ -61,6 +61,7 @@ function App() {
   }, [city]);
   
   React.useEffect(() => {
+    setWeatherIcon(<IconLoading fill="#466A9A" />)
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         function (position) {
